@@ -1,0 +1,267 @@
+.section {
+  position: relative;
+  isolation: isolate;
+  min-height: 660px;
+  overflow: hidden;
+  color: var(--color-text-inverse);
+  background: var(--color-ink);
+}
+
+.picture,
+.image,
+.overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.picture {
+  display: block;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  object-position: 50% center;
+  transform: scale(1.12);
+}
+
+.overlay {
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgb(4 6 7 / 14%) 0%, transparent 54%, rgb(4 6 7 / 28%) 100%),
+    linear-gradient(90deg, rgb(4 6 7 / 90%) 0%, rgb(4 6 7 / 76%) 34%, rgb(4 6 7 / 38%) 64%, rgb(4 6 7 / 10%) 100%);
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  min-height: 660px;
+  align-items: center;
+  padding-block: 72px;
+}
+
+.content {
+  width: min(59%, 790px);
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  color: #d5b55f;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.24em;
+}
+
+.eyebrow span {
+  width: 44px;
+  height: 1px;
+  background: currentColor;
+}
+
+.heading {
+  margin-top: 26px;
+  font-size: clamp(3.5rem, 5vw, 4.75rem);
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: -0.045em;
+}
+
+.heading span:first-child::after {
+  content: " ";
+}
+
+.lead {
+  max-width: 760px;
+  margin-top: 28px;
+  color: rgb(247 247 244 / 90%);
+  font-size: clamp(1rem, 1.35vw, 1.125rem);
+  line-height: 2;
+  letter-spacing: 0.02em;
+}
+
+.lead span {
+  display: block;
+}
+
+.actions {
+  display: grid;
+  max-width: 720px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 34px;
+}
+
+.primaryButton,
+.lineButton {
+  width: 100%;
+  min-height: 64px;
+  border-radius: 2px;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.primaryButton svg,
+.lineButton svg {
+  flex-shrink: 0;
+}
+
+.lineButton {
+  border: 1px solid #d5b55f;
+  color: var(--color-text-inverse);
+  background: rgb(4 6 7 / 54%);
+}
+
+.phoneLink {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 11px;
+  margin-top: 18px;
+  padding: 0 4px 5px;
+  border-bottom: 1px solid rgb(247 247 244 / 72%);
+  color: var(--color-text-inverse);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.phoneLink svg:last-child {
+  margin-left: 8px;
+}
+
+.sampleNotice {
+  min-height: 1.5em;
+  margin-top: 12px;
+  color: rgb(247 247 244 / 70%);
+  font-size: 0.6875rem;
+  line-height: 1.6;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .lineButton:hover {
+    color: var(--color-ink);
+    background: var(--color-gold);
+  }
+
+  .phoneLink:hover {
+    color: #d5b55f;
+    border-color: #d5b55f;
+  }
+}
+
+@media (max-width: 1023px) and (min-width: 768px) {
+  .content {
+    width: min(66%, 680px);
+  }
+
+  .heading {
+    font-size: clamp(3rem, 6vw, 4rem);
+  }
+
+  .actions {
+    max-width: 640px;
+  }
+}
+
+@media (max-width: 767px) {
+  .section,
+  .container {
+    height: auto;
+    min-height: 0;
+  }
+
+  .image {
+    object-position: 22% center;
+    transform: none;
+  }
+
+  .overlay {
+    background:
+      linear-gradient(180deg, rgb(4 6 7 / 78%) 0%, rgb(4 6 7 / 58%) 43%, rgb(4 6 7 / 33%) 68%, rgb(4 6 7 / 68%) 100%),
+      linear-gradient(90deg, rgb(4 6 7 / 54%) 0%, transparent 100%);
+  }
+
+  .container {
+    width: min(calc(100% - 48px), var(--container-wide));
+    align-items: flex-start;
+    padding-block: 72px 56px;
+  }
+
+  .content {
+    width: 100%;
+  }
+
+  .eyebrow {
+    gap: 13px;
+    font-size: 0.6875rem;
+    letter-spacing: 0.2em;
+  }
+
+  .eyebrow span {
+    width: 31px;
+  }
+
+  .heading {
+    margin-top: 22px;
+    font-size: clamp(3rem, 15vw, 4rem);
+    line-height: 1.18;
+  }
+
+  .heading span {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .heading span:first-child::after {
+    content: none;
+  }
+
+  .lead {
+    max-width: 350px;
+    margin-top: 26px;
+    font-size: clamp(0.9375rem, 4vw, 1.0625rem);
+    line-height: 1.9;
+  }
+
+  .lead span {
+    display: inline;
+  }
+
+  .actions {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    margin-top: 32px;
+  }
+
+  .primaryButton,
+  .lineButton {
+    min-height: 60px;
+    padding-inline: 20px;
+    font-size: clamp(0.9375rem, 4.2vw, 1.0625rem);
+  }
+
+  .phoneLink {
+    margin-top: 18px;
+    font-size: 0.9375rem;
+  }
+
+  .sampleNotice {
+    max-width: 330px;
+  }
+
+  .sampleNotice:empty {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primaryButton,
+  .lineButton,
+  .phoneLink {
+    transition: none;
+  }
+}

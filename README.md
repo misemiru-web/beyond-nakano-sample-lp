@@ -8,12 +8,13 @@ BEYOND 中野店 / 中野ANNEX店向けに制作する、ミセミルWebの営�
 
 ## Status
 
-- Requirements: prepared
-- Design definition: prepared
+- Requirements: v1.2（2026-09-24）
+- Design definition: v1.1（2026-09-24）
 - Desktop / Mobile references: prepared
 - Asset selection: prepared
 - Next.js project: initialized
-- Implementation: in progress
+- Content source / asset inventory: maintained
+- Implementation: current specification aligned（未確定情報を除く）
 
 ## Tech Stack
 
@@ -46,20 +47,13 @@ Tailwind CSSは使用していません。
 
 ## Source of Truth
 
-実装時は以下の順で確認します。
+実装時は最新版の以下2ファイルを正とします。
 
 ```text
-docs/
-├─ requirements/      # 要件定義書
-├─ design/            # デザイン定義書
-├─ references/        # Desktop / Mobile reference
-└─ assets/
-   ├─ candidates/
-   ├─ review-required/
-   └─ excluded/
-
-ASSET_PLACEMENT.md
-asset_manifest.csv
+docs/requirements/BEYOND中野_サンプルLP_要件定義書_v1.2_20260924.md
+docs/design/BEYOND中野_サンプルLP_デザイン定義書_v1.1_20260924.md
+content-source.md
+asset-inventory.md
 public/images/
 ```
 
@@ -67,10 +61,10 @@ public/images/
 
 1. `docs/requirements/`
 2. `docs/design/`
-3. `docs/references/`
-4. `ASSET_PLACEMENT.md`
-5. `asset_manifest.csv`
-6. `public/images/`
+3. `content-source.md`
+4. `asset-inventory.md`
+5. `public/images/`
+6. `docs/references/`（最新版定義書と矛盾しない場合のみ）
 
 矛盾・不足がある場合は推測せず確認します。
 
