@@ -1,26 +1,24 @@
 "use client";
 
-import {
-  Camera,
-  Clock3,
-  MapPin,
-  MessageCircle,
-  Phone,
-  TrainFront,
-} from "lucide-react";
+import { ArrowUpRight, Camera, MapPin, MessageCircle, Phone } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
-import { externalLinks, nakanoStore, sampleNotices } from "@/data/siteContent";
+import {
+  annexStore,
+  externalLinks,
+  nakanoStore,
+  sampleNotices,
+} from "@/data/siteContent";
 import { assetPath } from "@/lib/assetPath";
 
 import styles from "./Footer.module.css";
 
 const navigationItems = [
-  { label: "CONCEPT", href: "#reasons-heading" },
-  { label: "TRAINERS", href: "#trainers-heading" },
-  { label: "FACILITY", href: "#facility-heading" },
-  { label: "PRICE", href: "#price-heading" },
+  { label: "CONCEPT", href: "#concept" },
+  { label: "TRAINERS", href: "#trainers" },
+  { label: "FACILITY", href: "#facility" },
+  { label: "LOCATIONS", href: "#locations" },
   { label: "ACCESS", href: "#access" },
   { label: "FAQ", href: "#faq" },
 ] as const;
@@ -28,26 +26,88 @@ const navigationItems = [
 export function Footer() {
   const [sampleNotice, setSampleNotice] = useState("");
 
-  const showSampleNotice = (service: "Instagram" | "LINE") => {
-    setSampleNotice(service === "Instagram" ? sampleNotices.instagram : sampleNotices.line);
+  const showSampleNotice = (service: "Instagram" | "LINE" | "AnnexMap") => {
+    if (service === "Instagram") setSampleNotice(sampleNotices.instagram);
+    if (service === "LINE") setSampleNotice(sampleNotices.line);
+    if (service === "AnnexMap") setSampleNotice(sampleNotices.annexMap);
   };
 
   return (
     <footer className={styles.footer}>
       <div className={`container-wide ${styles.container}`}>
-        <div className={styles.main}>
+        <div className={styles.top}>
           <div className={styles.brand}>
             <a href="#top" aria-label="BEYOND中野 ページ上部へ">
               <Image
-                src={assetPath("/images/brand/beyond_nakano_logo_white.png")}
-                width={290}
-                height={111}
+                src={assetPath(
+                  "/images/brand/beyond_nakano_logo_black_transparent_hq.webp",
+                )}
+                width={1942}
+                height={809}
                 alt="BEYOND NAKANO"
               />
             </a>
+            <p>中野店を主拠点とする、2店舗統合の営業提案用サンプルです。</p>
           </div>
 
-          <nav className={styles.navigation} aria-label="フッターナビゲーション">
+          <div className={styles.locations}>
+            <section className={styles.location} aria-labelledby="footer-nakano-heading">
+              <p className={`font-en ${styles.locationLabel}`}>NAKANO / PRIMARY</p>
+              <h2 id="footer-nakano-heading">{nakanoStore.shortName}</h2>
+              <address>
+                <span>{nakanoStore.address}</span>
+                {nakanoStore.accessLines.map((line) => (
+                  <span key={line}>{line}</span>
+                ))}
+                <span>
+                  {nakanoStore.hours} / {nakanoStore.businessDays}
+                </span>
+              </address>
+              <div className={styles.locationActions}>
+                <a href={nakanoStore.telHref}>
+                  <Phone aria-hidden="true" size={17} strokeWidth={1.7} />
+                  {nakanoStore.telDisplay}
+                </a>
+                <a
+                  href={externalLinks.nakanoGoogleMaps}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MapPin aria-hidden="true" size={17} strokeWidth={1.7} />
+                  Google Maps
+                  <ArrowUpRight aria-hidden="true" size={15} strokeWidth={1.7} />
+                </a>
+              </div>
+            </section>
+
+            <section className={styles.location} aria-labelledby="footer-annex-heading">
+              <p className={`font-en ${styles.locationLabel}`}>NAKANO ANNEX / SECONDARY</p>
+              <h2 id="footer-annex-heading">{annexStore.shortName}</h2>
+              <address>
+                <span>{annexStore.address}</span>
+                {annexStore.accessLines.map((line) => (
+                  <span key={line}>{line}</span>
+                ))}
+                <span>
+                  {annexStore.hours} / {annexStore.businessDays}
+                </span>
+              </address>
+              <div className={styles.locationActions}>
+                <a href={annexStore.telHref}>
+                  <Phone aria-hidden="true" size={17} strokeWidth={1.7} />
+                  {annexStore.telDisplay}
+                </a>
+                <button type="button" onClick={() => showSampleNotice("AnnexMap")}>
+                  <MapPin aria-hidden="true" size={17} strokeWidth={1.7} />
+                  Google Mapsは正式制作時に設定
+                </button>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <div className={styles.utility}>
+          <nav aria-label="フッターナビゲーション">
             <ul>
               {navigationItems.map((item) => (
                 <li key={item.href}>
@@ -57,67 +117,16 @@ export function Footer() {
             </ul>
           </nav>
 
-          <div className={styles.shop}>
-            <h2>
-              <span>BEYOND（ビヨンド）ジム</span>
-              <span>中野店</span>
-            </h2>
-            <ul className={styles.shopDetails}>
-              <li>
-                <MapPin aria-hidden="true" size={20} strokeWidth={1.65} />
-                <span>{nakanoStore.address}</span>
-              </li>
-              <li>
-                <TrainFront aria-hidden="true" size={20} strokeWidth={1.65} />
-                <span>
-                  {nakanoStore.accessLines[0]}
-                  <br />
-                  {nakanoStore.accessLines[1]}
-                </span>
-              </li>
-              <li>
-                <Clock3 aria-hidden="true" size={20} strokeWidth={1.65} />
-                <span>営業時間 {nakanoStore.hours}</span>
-              </li>
-              <li>
-                <Phone aria-hidden="true" size={20} strokeWidth={1.65} />
-                <a href={nakanoStore.telHref}>TEL {nakanoStore.telDisplay}</a>
-              </li>
-            </ul>
-
-            <div className={styles.socials} aria-label="関連リンク">
-              <button type="button" onClick={() => showSampleNotice("Instagram")}>
-                <Camera aria-hidden="true" size={20} strokeWidth={1.65} />
-                <span>Instagram</span>
-              </button>
-              <a
-                href={externalLinks.googleMaps}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <MapPin aria-hidden="true" size={20} strokeWidth={1.65} />
-                <span>Google Maps</span>
-              </a>
-              <button type="button" onClick={() => showSampleNotice("LINE")}>
-                <MessageCircle aria-hidden="true" size={20} strokeWidth={1.65} />
-                <span>LINE</span>
-              </button>
-            </div>
+          <div className={styles.socials} aria-label="未設定の関連導線">
+            <button type="button" onClick={() => showSampleNotice("Instagram")}>
+              <Camera aria-hidden="true" size={18} strokeWidth={1.7} />
+              Instagram
+            </button>
+            <button type="button" onClick={() => showSampleNotice("LINE")}>
+              <MessageCircle aria-hidden="true" size={18} strokeWidth={1.7} />
+              LINE
+            </button>
           </div>
-        </div>
-
-        <div className={styles.mobileNavigation}>
-          <nav aria-label="モバイルフッターナビゲーション">
-            <ul>
-              {navigationItems.map((item) => (
-                <li key={item.href}>
-                  <a href={item.href}>
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
         </div>
 
         <p className={styles.sampleNotice} role="status" aria-live="polite">
@@ -125,10 +134,8 @@ export function Footer() {
         </p>
 
         <div className={styles.bottom}>
-          <div>
-            <p>このページは営業提案用サンプルです。</p>
-            <small>© BEYOND NAKANO</small>
-          </div>
+          <p>このページは営業提案用サンプルです。</p>
+          <small>© BEYOND NAKANO</small>
         </div>
       </div>
     </footer>

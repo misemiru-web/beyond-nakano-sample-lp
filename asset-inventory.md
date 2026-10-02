@@ -1,13 +1,15 @@
 # Asset Inventory
 
-更新日: 2026-09-24
+更新日: 2026-10-01
 
 本LPで使用する画像は、`public/images/`に配置された確定素材に限定する。実在人物・店舗・アクセス経路の生成・改変は行わない。
 
+中野店用のAccess原写真5枚は中野店専用とし、ANNEX店の道順写真として流用しない。
+
 | ファイル | 出典 / 区分 | 使用許可 | 使用箇所 | alt方針 |
 |---|---|---|---|---|
-| `brand/beyond_nakano_logo_black.png` | 公式ブランド素材 | 取得済み | Header | BEYOND NAKANO |
-| `brand/beyond_nakano_logo_white.png` | 公式ブランド素材 | 取得済み | Header / Footer | BEYOND NAKANO |
+| `brand/beyond_nakano_logo_black_transparent_hq.webp` | 公式ブランド素材 | 取得済み | Header / Footer | BEYOND NAKANO |
+| `brand/beyond_nakano_logo_white.png` | 公式ブランド素材 | 取得済み | Header | BEYOND NAKANO |
 | `hero/hero_01_training_coaching_v2.jpg` | 中野店実写 | 取得済み | Hero / Final CTA | トレーナーが利用者をサポートする様子 |
 | `hero/hero_01_training_coaching_mobile.webp` | 中野店実写 Mobile crop | 取得済み | Hero / Final CTA Mobile | Desktopと同一内容 |
 | `hero/hero_02_treadmill_v2.jpg` | 中野店実写 | 取得済み | Hero | 店内でトレッドミルを使う様子 |
@@ -32,7 +34,7 @@
 | `awards/award_getfit_2023_selected_no1_optimized.webp` | 提供済みAward素材 | 取得済み | Trust | Getfit AWARD 2023 |
 | `awards/award_best_gym_2020_optimized.webp` | 提供済みAward素材 | 取得済み | Trust | BEST GYM AWARD 2020 |
 | `stores/store_nakano_main.webp` | 中野店実写 | 取得済み | Stores | 中野店受付空間 |
-| `stores/store_annex_main.webp` | ANNEX実写 | 取得済み | Stores | ANNEXトレーニング空間 |
+| `stores/store_annex_main.webp` | ANNEX実写 | 取得済み | Stores / ANNEX Access | ANNEXトレーニング空間 |
 | `trial/trial_reception.webp` | 公式体験フロー素材 | 取得済み | Trial Flow 01 | 受付 |
 | `trial/trial_counseling.webp` | 公式体験フロー素材 | 取得済み | Trial Flow 02 | 無料カウンセリング |
 | `trial/trial_body_composition.webp` | 公式体験フロー素材 | 取得済み | Trial Flow 03 | 体組成測定 |

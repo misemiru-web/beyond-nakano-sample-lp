@@ -8,8 +8,8 @@ BEYOND 中野店 / 中野ANNEX店向けに制作する、ミセミルWebの営�
 
 ## Status
 
-- Requirements: v1.2（2026-09-24）
-- Design definition: v1.1（2026-09-24）
+- Requirements: v1.2（2026-10-01）
+- Design definition: v1.1（2026-10-01）
 - Desktop / Mobile references: prepared
 - Asset selection: prepared
 - Next.js project: initialized
@@ -50,8 +50,8 @@ Tailwind CSSは使用していません。
 実装時は最新版の以下2ファイルを正とします。
 
 ```text
-docs/requirements/BEYOND中野_サンプルLP_要件定義書_v1.2_20260924.md
-docs/design/BEYOND中野_サンプルLP_デザイン定義書_v1.1_20260924.md
+docs/requirements/BEYOND中野_サンプルLP_要件定義書_v1.2_20261001.md
+docs/design/BEYOND中野_サンプルLP_デザイン定義書_v1.1_20261001.md
 content-source.md
 asset-inventory.md
 public/images/
@@ -83,15 +83,19 @@ public/images/
 ├─ trust/
 ├─ results/
 ├─ trial/
+├─ stores/
 ├─ access/
 └─ details/
 ```
 
 ### Asset rules
 
-- ロゴは透過PNG
+- ロゴは背景透過素材を使用する（PNG / WebP）
 - 実在人物・施設・アクセス写真はAIで作り直さない
 - Accessは確定した原写真を使用
+- 中野店用Access写真をANNEX店へ流用しない
+- 中野店 / ANNEX店の写真・住所・Map・CTAを取り違えない
+- ANNEX店は最新版の要件定義書・デザイン定義書に従い、独立した店舗情報として扱う
 - Before / Afterの文字・数値・矢印はReact/CSSで構築
 - LINE / 電話 / メールCTAはReact/CSSで構築
 - `docs/assets/review-required/` は権利・事実確認前の素材
@@ -189,7 +193,10 @@ npm run build
 - Navigation / Menu
 - CTA
 - FAQ
+- Stores / Locations
+- 中野店 / ANNEX店の情報紐付け
 - Access
+- 店舗別Map / 外部リンク
 - focus-visible
 - reduced motion
 - hydration error

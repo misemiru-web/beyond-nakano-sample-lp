@@ -1,5 +1,6 @@
 import { BadgeCheck, Quote } from "lucide-react";
 
+import { Reveal } from "@/components/Reveal/Reveal";
 import styles from "./CustomerVoice.module.css";
 
 const voices = [
@@ -31,23 +32,33 @@ export function CustomerVoice() {
     <section className={styles.section} aria-labelledby="customer-voice-heading">
       <div className={`container ${styles.inner}`}>
         <header className={styles.header}>
-          <p className={`eyebrow font-en ${styles.eyebrow}`}>
+          <Reveal as="p" className={`eyebrow font-en ${styles.eyebrow}`}>
             CUSTOMER VOICE
-          </p>
-          <h2 id="customer-voice-heading" className={styles.heading}>
+          </Reveal>
+          <Reveal
+            as="h2"
+            id="customer-voice-heading"
+            className={styles.heading}
+            delay={70}
+          >
             <span>続けられる理由を、</span>
             <span>会員様の声から。</span>
-          </h2>
-          <p className={styles.lead}>
+          </Reveal>
+          <Reveal as="p" className={styles.lead} delay={140}>
             安心して始められ、無理なく続けられること。
             <br className={styles.desktopBreak} />
             中野店に通う方の体験をご紹介します。
-          </p>
+          </Reveal>
         </header>
 
         <div className={styles.voices}>
-          {voices.map((voice) => (
-            <article className={styles.voice} key={voice.number}>
+          {voices.map((voice, index) => (
+            <Reveal
+              as="article"
+              className={styles.voice}
+              delay={index * 80}
+              key={voice.number}
+            >
               <div className={styles.cardHeader}>
                 <p className={`font-en ${styles.number}`}>{voice.number}</p>
                 <Quote
@@ -60,14 +71,14 @@ export function CustomerVoice() {
               <h3 className={styles.name}>{voice.name}</h3>
               <p className={styles.profile}>{voice.profile}</p>
               <p className={styles.summary}>{voice.summary}</p>
-            </article>
+            </Reveal>
           ))}
         </div>
 
-        <div className={styles.source}>
+        <Reveal className={styles.source} delay={80}>
           <BadgeCheck size={18} strokeWidth={1.5} aria-hidden="true" />
           <p>BEYOND中野店公式ページの掲載内容をもとに要約しています。</p>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

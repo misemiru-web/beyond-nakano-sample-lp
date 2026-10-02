@@ -3,6 +3,7 @@
 import { ArrowRight, Minus, Plus } from "lucide-react";
 import { useState } from "react";
 
+import { Reveal } from "@/components/Reveal/Reveal";
 import { nakanoStore, sampleNotices } from "@/data/siteContent";
 
 import styles from "./Faq.module.css";
@@ -62,12 +63,16 @@ export function Faq() {
     <section id="faq" className={styles.section} aria-labelledby="faq-heading">
       <div className={`container ${styles.container}`}>
         <header className={styles.header}>
-          <p className={`eyebrow font-en ${styles.eyebrow}`}>FAQ</p>
-          <h2 id="faq-heading" className={styles.heading}>よくあるご質問。</h2>
-          <p className={styles.lead}>
+          <Reveal as="p" className={`eyebrow font-en ${styles.eyebrow}`}>
+            FAQ
+          </Reveal>
+          <Reveal as="h2" id="faq-heading" className={styles.heading} delay={70}>
+            よくあるご質問。
+          </Reveal>
+          <Reveal as="p" className={styles.lead} delay={140}>
             <span>BEYOND中野店の体験・料金・通い方について、</span>
             <span>よくいただくご質問をまとめました。</span>
-          </p>
+          </Reveal>
         </header>
 
         <div className={styles.list}>
@@ -77,7 +82,11 @@ export function Faq() {
             const questionId = `faq-question-${index + 1}`;
 
             return (
-              <div className={styles.item} key={item.question}>
+              <Reveal
+                className={styles.item}
+                delay={(index % 3) * 60}
+                key={item.question}
+              >
                 <h3>
                   <button
                     id={questionId}
@@ -123,12 +132,12 @@ export function Faq() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Reveal>
             );
           })}
         </div>
 
-        <div className={styles.cta}>
+        <Reveal className={styles.cta}>
           <p>ほかに気になることがある方へ</p>
           <button
             className={`button button--primary ${styles.ctaButton}`}
@@ -141,7 +150,7 @@ export function Faq() {
           <p className={styles.sampleNotice} role="status" aria-live="polite">
             {sampleNotice}
           </p>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

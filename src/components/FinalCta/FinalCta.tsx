@@ -4,6 +4,7 @@ import { ArrowRight, Phone } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
+import { Reveal } from "@/components/Reveal/Reveal";
 import { nakanoStore, sampleNotices } from "@/data/siteContent";
 import { assetPath } from "@/lib/assetPath";
 
@@ -46,21 +47,21 @@ export function FinalCta() {
 
       <div className={`container-wide ${styles.container}`}>
         <div className={styles.content}>
-          <p className={`font-en ${styles.eyebrow}`}>
+          <Reveal as="p" className={`font-en ${styles.eyebrow}`}>
             <span aria-hidden="true" />
             START YOUR JOURNEY
             <span aria-hidden="true" />
-          </p>
-          <h2 id="reservation-heading" className={styles.heading}>
+          </Reveal>
+          <Reveal as="h2" id="reservation-heading" className={styles.heading} delay={70}>
             <span>まずは、</span>
             <span>体験から。</span>
-          </h2>
-          <p className={styles.lead}>
+          </Reveal>
+          <Reveal as="p" className={styles.lead} delay={140}>
             <span>無理な勧誘はなく、現在のお悩みや目標に合わせてご相談いただけます。</span>
             <span>まずは無料体験・無料カウンセリングから、お気軽にお越しください。</span>
-          </p>
+          </Reveal>
 
-          <div className={styles.actions}>
+          <Reveal className={styles.actions} delay={210}>
             <button
               className={`button button--primary ${styles.primaryButton}`}
               type="button"
@@ -77,13 +78,18 @@ export function FinalCta() {
               <span>LINEで相談する</span>
               <ArrowRight aria-hidden="true" size={19} strokeWidth={1.65} />
             </button>
-          </div>
+          </Reveal>
 
-          <a className={styles.phoneLink} href={nakanoStore.telHref}>
+          <Reveal
+            as="a"
+            className={styles.phoneLink}
+            href={nakanoStore.telHref}
+            delay={280}
+          >
             <Phone aria-hidden="true" size={20} strokeWidth={1.65} />
             <span>電話で問い合わせる</span>
             <ArrowRight aria-hidden="true" size={18} strokeWidth={1.65} />
-          </a>
+          </Reveal>
 
           <p className={styles.sampleNotice} role="status" aria-live="polite">
             {sampleNotice}

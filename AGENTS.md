@@ -79,16 +79,20 @@ UIアイコンが必要な場合は原則 `lucide-react` を使用する。
 - `public/images/trust/`
 - `public/images/results/`
 - `public/images/trial/`
+- `public/images/stores/`
 - `public/images/access/`
 - `public/images/details/`
 
 ルール:
-- ロゴは透過PNGを使用する
+- ロゴは背景透過素材を使用する（PNG / WebP）
 - 写真は必要に応じて `next/image` を使用する
 - Before / After のラベル、数値、矢印、説明は画像に焼き込まずReact/CSSで実装する
 - LINE / 電話 / メール CTA は画像化せずReact/CSSで実装する
 - Trial Flowの透過素材は全て並べず、デザイン定義書に従い1〜2点を主役として使う
 - Accessは確定した5枚の原写真を使用し、`object-fit: cover` / `object-position` で調整する
+- 中野店と中野ANNEX店の写真・住所・Map・CTAを取り違えない
+- 中野店用Access写真をANNEX店へ流用しない
+- ANNEX店は小型補助カードだけで処理せず、最新版の要件定義書・デザイン定義書に従う
 - `public/images_old/` はローカル退避用。実装から参照しない
 
 ## Responsive
@@ -151,7 +155,10 @@ npm run dev
 - CTA
 - Navigation / Menu
 - FAQ
+- Stores / Locations
+- 中野店 / ANNEX店の情報紐付け
 - Access
+- 店舗別Map / 外部リンク
 - focus-visible
 - reduced motion
 - 画像404なし

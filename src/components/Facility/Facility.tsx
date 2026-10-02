@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Reveal } from "@/components/Reveal/Reveal";
 import { assetPath } from "@/lib/assetPath";
 import styles from "./Facility.module.css";
 
@@ -32,18 +33,20 @@ export function Facility() {
       <div className="container-wide">
         <div className={styles.intro}>
           <header className={styles.copy}>
-            <p className={`eyebrow font-en ${styles.eyebrow}`}>FACILITY</p>
-            <h2 id="facility-heading" className={styles.heading}>
+            <Reveal as="p" className={`eyebrow font-en ${styles.eyebrow}`}>
+              FACILITY
+            </Reveal>
+            <Reveal as="h2" id="facility-heading" className={styles.heading} delay={70}>
               <span>洗練された空間で、</span>
               <span>通う時間まで心地よく。</span>
-            </h2>
-            <p className={styles.lead}>
+            </Reveal>
+            <Reveal as="p" className={styles.lead} delay={140}>
               <span>トレーニングに集中できる空間と、</span>
               <span>快適に通える環境を整えています。</span>
-            </p>
+            </Reveal>
           </header>
 
-          <div className={styles.mainImageWrap}>
+          <Reveal className={styles.mainImageWrap} variant="fade">
             <Image
               className={styles.image}
               src={assetPath("/images/facility/facility_main_floor.webp")}
@@ -53,12 +56,18 @@ export function Facility() {
               quality={90}
               sizes="(max-width: 767px) calc(100vw - 40px), 64vw"
             />
-          </div>
+          </Reveal>
         </div>
 
         <div className={styles.details}>
-          {details.map((detail) => (
-            <figure className={`${styles.detail} ${detail.className}`} key={detail.label}>
+          {details.map((detail, index) => (
+            <Reveal
+              as="figure"
+              className={`${styles.detail} ${detail.className}`}
+              delay={index * 70}
+              variant="fade"
+              key={detail.label}
+            >
               <div className={styles.detailImageWrap}>
                 <Image
                   className={styles.image}
@@ -81,7 +90,7 @@ export function Facility() {
                   ))}
                 </span>
               </figcaption>
-            </figure>
+            </Reveal>
           ))}
         </div>
       </div>

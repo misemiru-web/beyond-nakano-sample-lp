@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Reveal } from "@/components/Reveal/Reveal";
 import { assetPath } from "@/lib/assetPath";
 import styles from "./Results.module.css";
 
@@ -13,14 +14,16 @@ export function Results() {
     <section className={styles.section} aria-labelledby="results-heading">
       <div className={`container-wide ${styles.layout}`}>
         <header className={styles.header}>
-          <p className={`eyebrow font-en ${styles.eyebrow}`}>RESULTS</p>
-          <h2 id="results-heading" className={styles.heading}>
+          <Reveal as="p" className={`eyebrow font-en ${styles.eyebrow}`}>
+            RESULTS
+          </Reveal>
+          <Reveal as="h2" id="results-heading" className={styles.heading} delay={70}>
             変化の一例。
-          </h2>
+          </Reveal>
         </header>
 
         <div className={styles.visuals}>
-          <figure className={styles.figure}>
+          <Reveal as="figure" className={styles.figure} variant="fade">
             <span className={`font-en ${styles.imageLabel}`}>BEFORE</span>
             <Image
               className={styles.image}
@@ -32,8 +35,8 @@ export function Results() {
               quality={90}
               sizes="(max-width: 767px) calc(50vw - 24px), 30vw"
             />
-          </figure>
-          <figure className={styles.figure}>
+          </Reveal>
+          <Reveal as="figure" className={styles.figure} variant="fade" delay={70}>
             <span className={`font-en ${styles.imageLabel} ${styles.afterLabel}`}>
               AFTER
             </span>
@@ -47,10 +50,10 @@ export function Results() {
               quality={90}
               sizes="(max-width: 767px) calc(50vw - 24px), 30vw"
             />
-          </figure>
+          </Reveal>
         </div>
 
-        <div className={styles.info}>
+        <Reveal className={styles.info} delay={80}>
           <div className={styles.profile}>
             <p className={styles.name}>K.Mさん</p>
             <p className={styles.period}>期間12ヶ月</p>
@@ -74,7 +77,7 @@ export function Results() {
           <p className={styles.note}>
             ※公式公開情報をもとにした事例です。結果には個人差があります。
           </p>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

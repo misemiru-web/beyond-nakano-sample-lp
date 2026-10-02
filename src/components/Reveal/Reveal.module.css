@@ -1,0 +1,34 @@
+.reveal {
+  --reveal-distance: 20px;
+}
+
+.armed {
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-distance), 0);
+  transition:
+    opacity var(--reveal-duration) var(--ease-standard) var(--reveal-delay),
+    transform var(--reveal-duration) var(--ease-standard) var(--reveal-delay);
+  will-change: opacity, transform;
+}
+
+.armed.fade {
+  transform: none;
+}
+
+.armed.visible {
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .armed,
+  .armed.fade,
+  .armed.visible {
+    opacity: 1;
+    transform: none;
+    transition-duration: 1ms;
+    transition-delay: 0ms;
+    will-change: auto;
+  }
+}

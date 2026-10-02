@@ -1,7 +1,16 @@
-import { ArrowRight, CalendarDays, Clock, MapPin, Train } from "lucide-react";
-import Image from "next/image";
+"use client";
 
-import { externalLinks, nakanoStore } from "@/data/siteContent";
+import { ArrowRight, CalendarDays, Clock, MapPin, Phone, Train } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
+
+import { Reveal } from "@/components/Reveal/Reveal";
+import {
+  annexStore,
+  externalLinks,
+  nakanoStore,
+  sampleNotices,
+} from "@/data/siteContent";
 import { assetPath } from "@/lib/assetPath";
 
 import styles from "./Access.module.css";
@@ -57,30 +66,44 @@ const shopDetails = [
   },
   {
     icon: CalendarDays,
-    label: "営業日",
+    label: "定休日",
     lines: [nakanoStore.businessDays],
   },
 ] as const;
 
 export function Access() {
+  const [sampleNotice, setSampleNotice] = useState("");
+
   return (
     <section id="access" className={styles.section} aria-labelledby="access-heading">
       <div className={`container-wide ${styles.container}`}>
         <header className={styles.header}>
-          <p className={`eyebrow font-en ${styles.eyebrow}`}>ACCESS</p>
-          <h2 id="access-heading" className={styles.heading}>
-            <span>中野駅から、</span>
-            <span>徒歩1分。</span>
-          </h2>
-          <p className={styles.lead}>
-            初めての方でも迷わずお越しいただけるよう、
-            <span>写真付きで道順をご案内します。</span>
-          </p>
+          <Reveal as="p" className={`eyebrow font-en ${styles.eyebrow}`}>
+            ACCESS
+          </Reveal>
+          <Reveal as="h2" id="access-heading" className={styles.heading} delay={70}>
+            <span>2つの店舗への</span>
+            <span>アクセス。</span>
+          </Reveal>
+          <Reveal as="p" className={styles.lead} delay={140}>
+            中野店は写真付きの5STEP、中野ANNEX店は確認済みの店舗情報でご案内します。
+          </Reveal>
         </header>
+
+        <Reveal className={styles.accessBlockHeading}>
+          <p className={`font-en ${styles.accessLabel}`}>NAKANO ACCESS</p>
+          <h3>中野駅北口から、徒歩1分。</h3>
+          <p>初めての方でも迷わずお越しいただけるよう、写真で道順をご案内します。</p>
+        </Reveal>
 
         <ol className={styles.steps}>
           {steps.map((step, index) => (
-            <li className={styles.step} key={step.number}>
+            <Reveal
+              as="li"
+              className={styles.step}
+              delay={index * 80}
+              key={step.number}
+            >
               <div className={styles.photo}>
                 <Image
                   src={step.image}
@@ -108,24 +131,24 @@ export function Access() {
                 </div>
                 <p>{step.text}</p>
               </div>
-            </li>
+            </Reveal>
           ))}
         </ol>
 
         <div className={styles.location}>
-          <div className={styles.map}>
+          <Reveal className={styles.map} variant="fade">
             <iframe
-              src={externalLinks.googleMapsEmbed}
+              src={externalLinks.nakanoGoogleMapsEmbed}
               title="BEYOND中野店のGoogle Map"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               allowFullScreen
             />
-          </div>
+          </Reveal>
 
-          <div className={styles.shopInfo}>
+          <Reveal className={styles.shopInfo} delay={80}>
             <p className={`font-en ${styles.shopLabel}`}>SHOP INFORMATION</p>
-            <h3>{nakanoStore.name}</h3>
+            <h4>{nakanoStore.name}</h4>
             <dl className={styles.shopDetails}>
               {shopDetails.map((detail) => {
                 const Icon = detail.icon;
@@ -147,15 +170,85 @@ export function Access() {
             </dl>
             <a
               className={`button button--primary ${styles.mapsButton}`}
-              href={externalLinks.googleMaps}
+              href={externalLinks.nakanoGoogleMaps}
               target="_blank"
               rel="noopener noreferrer"
             >
-              Google Mapsで見る
+              中野店をGoogle Mapsで見る
               <ArrowRight aria-hidden="true" size={18} strokeWidth={1.75} />
             </a>
-          </div>
+          </Reveal>
         </div>
+
+        <article className={styles.annexAccess} aria-labelledby="annex-access-heading">
+          <Reveal className={styles.annexPhoto} variant="fade">
+            <Image
+              src={assetPath("/images/stores/store_annex_main.webp")}
+              alt="BEYOND中野ANNEX店のトレーニング空間"
+              fill
+              loading="lazy"
+              quality={90}
+              sizes="(max-width: 767px) calc(100vw - 40px), 52vw"
+            />
+          </Reveal>
+
+          <Reveal className={styles.annexInfo} delay={80}>
+            <p className={`font-en ${styles.accessLabel}`}>NAKANO ANNEX ACCESS</p>
+            <h3 id="annex-access-heading">{annexStore.shortName}</h3>
+            <p className={styles.annexAccessLead}>{annexStore.access}</p>
+
+            <dl className={styles.annexDetails}>
+              <div>
+                <dt>
+                  <MapPin aria-hidden="true" size={20} strokeWidth={1.75} />
+                  <span className="visually-hidden">所在地</span>
+                </dt>
+                <dd>{annexStore.address}</dd>
+              </div>
+              <div>
+                <dt>
+                  <Train aria-hidden="true" size={20} strokeWidth={1.75} />
+                  <span className="visually-hidden">アクセス</span>
+                </dt>
+                <dd>
+                  {annexStore.accessLines.map((line) => (
+                    <span key={line}>{line}</span>
+                  ))}
+                </dd>
+              </div>
+              <div>
+                <dt>
+                  <Clock aria-hidden="true" size={20} strokeWidth={1.75} />
+                  <span className="visually-hidden">営業時間</span>
+                </dt>
+                <dd>
+                  {annexStore.hours} / {annexStore.businessDays}
+                </dd>
+              </div>
+              <div>
+                <dt>
+                  <Phone aria-hidden="true" size={20} strokeWidth={1.75} />
+                  <span className="visually-hidden">電話</span>
+                </dt>
+                <dd>
+                  <a href={annexStore.telHref}>{annexStore.telDisplay}</a>
+                </dd>
+              </div>
+            </dl>
+
+            <button
+              className={`button ${styles.annexMapsButton}`}
+              type="button"
+              onClick={() => setSampleNotice(sampleNotices.annexMap)}
+            >
+              ANNEX店のGoogle Maps
+              <span>正式制作時に設定</span>
+            </button>
+            <p className={styles.sampleNotice} role="status" aria-live="polite">
+              {sampleNotice}
+            </p>
+          </Reveal>
+        </article>
       </div>
     </section>
   );

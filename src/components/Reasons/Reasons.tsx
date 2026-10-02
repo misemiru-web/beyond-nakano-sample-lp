@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Reveal } from "@/components/Reveal/Reveal";
 import { assetPath } from "@/lib/assetPath";
 import styles from "./Reasons.module.css";
 
@@ -51,21 +52,23 @@ export function Reasons() {
     <section id="concept" className={styles.section} aria-labelledby="reasons-heading">
       <div className="container-wide">
         <header className={styles.header}>
-          <p className={`eyebrow font-en ${styles.eyebrow}`}>REASON</p>
-          <h2 id="reasons-heading" className={styles.heading}>
+          <Reveal as="p" className={`eyebrow font-en ${styles.eyebrow}`}>
+            REASON
+          </Reveal>
+          <Reveal as="h2" id="reasons-heading" className={styles.heading} delay={70}>
             BEYONDが<br className={styles.mobileBreak} />選ばれる理由
-          </h2>
-          <p className={styles.lead}>
+          </Reveal>
+          <Reveal as="p" className={styles.lead} delay={140}>
             <span>ただ鍛えるだけじゃない。</span>
             <span>
               続けられる仕組みが、
               <span className={styles.leadKeep}>ここにはあります。</span>
             </span>
-          </p>
+          </Reveal>
         </header>
 
         <div className={styles.layout}>
-          <div className={styles.imageWrap}>
+          <Reveal className={styles.imageWrap} variant="fade">
             <Image
               className={styles.image}
               src={assetPath("/images/reasons/reasons_support_counseling.webp")}
@@ -75,11 +78,16 @@ export function Reasons() {
               quality={90}
               sizes="(max-width: 767px) calc(100vw - 40px), 58vw"
             />
-          </div>
+          </Reveal>
 
           <ol className={styles.list}>
-            {reasons.map((reason) => (
-              <li className={styles.item} key={reason.number}>
+            {reasons.map((reason, index) => (
+              <Reveal
+                as="li"
+                className={styles.item}
+                delay={index * 70}
+                key={reason.number}
+              >
                 <span className={`font-en ${styles.number}`} aria-hidden="true">
                   {reason.number}
                 </span>
@@ -87,7 +95,7 @@ export function Reasons() {
                   <h3 className={styles.itemHeading}>{reason.title}</h3>
                   <p className={styles.body}>{reason.body}</p>
                 </div>
-              </li>
+              </Reveal>
             ))}
           </ol>
         </div>

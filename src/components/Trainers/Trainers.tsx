@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Reveal } from "@/components/Reveal/Reveal";
 import { assetPath } from "@/lib/assetPath";
 import styles from "./Trainers.module.css";
 
@@ -52,18 +53,20 @@ export function Trainers() {
     <section id="trainers" className={styles.section} aria-labelledby="trainers-heading">
       <div className="container-wide">
         <header className={styles.header}>
-          <p className={`eyebrow font-en ${styles.eyebrow}`}>TRAINERS</p>
-          <h2 id="trainers-heading" className={styles.heading}>
+          <Reveal as="p" className={`eyebrow font-en ${styles.eyebrow}`}>
+            TRAINERS
+          </Reveal>
+          <Reveal as="h2" id="trainers-heading" className={styles.heading} delay={80}>
             続ける力を支える、
             <br className={styles.mobileBreak} />
             トレーナー。
-          </h2>
+          </Reveal>
         </header>
 
         <ol className={styles.list}>
           {trainers.map((trainer) => (
             <li className={styles.item} key={trainer.number}>
-              <div className={styles.imageWrap}>
+              <Reveal className={styles.imageWrap} variant="fade">
                 <Image
                   className={styles.image}
                   src={trainer.image}
@@ -74,9 +77,9 @@ export function Trainers() {
                   quality={90}
                   sizes="(max-width: 767px) 144px, (max-width: 1023px) 46vw, 23vw"
                 />
-              </div>
+              </Reveal>
 
-              <div className={styles.identity}>
+              <Reveal className={styles.identity} delay={80}>
                 <span className={`font-en ${styles.number}`} aria-hidden="true">
                   {trainer.number}
                 </span>
@@ -91,7 +94,7 @@ export function Trainers() {
                     <span className={styles.mobileMessage}>{trainer.shortMessage}</span>
                   </p>
                 </div>
-              </div>
+              </Reveal>
             </li>
           ))}
         </ol>

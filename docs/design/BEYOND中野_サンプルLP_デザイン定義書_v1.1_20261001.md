@@ -1,40 +1,44 @@
 # BEYOND中野 営業提案用サンプルLP デザイン定義書 v1.1
 
-**更新日：2026年9月27日**  
-**対象：BEYOND中野店を主対象、中野ANNEX店を副対象**  
-**上位仕様：要件定義書 v1.2**  
+**作成日：2026年9月21日**
+**更新日：2026年10月1日**
+**対象：BEYOND中野店を主対象とする2店舗統合LP / 中野ANNEX店を副対象**
+**上位仕様：要件定義書 v1.2**
+**前版：デザイン定義書 v1.0**
+**本版：v1.1**
 **用途：リファレンス画像作成 → Next.js / React / CSS実装**
 
 ---
 
 ## 0. 前提と優先順位
 
+v1.1は、要件定義書 v1.2で確定した**「現在の中野店LPにANNEX店の情報を加える2店舗統合構成」**をデザインへ反映する更新版である。
+
 本LPは、「黒くて格好いいジムサイト」を作ることを目的としない。
 
-BEYOND中野店の公式訴求で確認できる、**継続しやすさ / 食事管理 / 実トレーナー / 駅近 / 手ぶら / 空間品質**を、実写と静かな編集デザインで伝える。
+BEYOND中野店の現在の公式訴求は、単なる短期ダイエットではなく、**「一生続けられる習慣」「無理のない食事管理」「また来たくなる空間」**に置かれている。したがって今回のアートディレクションでも、筋肉・威圧感・ストイックさだけを強調せず、**専門性 × 継続しやすさ × 人の温度 × 上質な空間**を同時に成立させる。
 
-v1.1では、9月27日までに確定した最終実装とQA判断を反映する。
+現在の公式中野店ページでは中野駅北口徒歩1分、レンタルウェア・シューズ、シャワー等の設備が確認できるため、「駅近」「手ぶら」「環境」は実際の価値としてデザイン上も重要視する。
 
-### v1.1で固定する主な変更
+ANNEX店は中野店より後に配置し、ページ全体の視覚的主役は中野店とする。ただし、ANNEXを小さな補足カードだけで処理せず、**ANNEX単体でも店舗名・写真・住所・アクセス・基本情報・Map等を理解できる情報量**を確保する。
 
-- Price：Summary + Inline Detail AccordionをNear Black基調で統一
-- Access：実写5step + Color Google Map + Dark Shop Information
-- FAQ：H2は「よくあるご質問。」、Divider Accordion
-- Final CTA：Hero 1枚目系の実写を再利用可。Mobileの高さはcontent-driven
-- Footer：**LightではなくInk/Dark基調**
-- Customer Voice：3件のEditorial Card UI + 共通出典注記
-- Trainers：Desktop 4 columns / Mobile Compact Profile Row
-- Trust / Awards：2025 Main Recognition + 2020〜2023 Recognition History
-- Blog Preview：FAQとFinal CTAの間にEditorialな最新3件を実装
-- Header：Desktop Price anchor、Mobile Full Width Dark Menu
-- Footer：営業提案用サンプル表記を最下部に表示
+### v1.1の主な変更
 
-### 要件との整合上の注意
+- Storesを「中野店大＋ANNEX小カード」から、2店舗の独立Editorial Blockへ再設計
+- Accessを「中野店5STEP」と「ANNEXアクセス情報」に分離
+- Footerに中野店・ANNEX店の店舗情報を明確に掲載
+- Mobileで2店舗の境界が曖昧にならないレスポンシブ仕様を追加
+- リファレンス画像生成条件に2店舗識別ルールを追加
 
-- 料金・営業時間など公式内に差異がある項目は、デザイン側で勝手に正解を決めない
-- 未確認の`No.1`・継続率・満足度等を装飾目的で追加しない
-- サンプルでは個人情報を収集するフォームを実装しない
-- 中野 / ANNEXを混同しない
+### 要件定義書との整合上の注意
+
+- 生成済みリファレンス画像に含まれていた「継続率90%以上」等の未確認表現は**実装では使用しない**。
+- 参考画像に問い合わせフォームが存在するが、要件定義書v1.2により、**営業サンプルでは個人情報を収集しない**。
+- 中野店・ANNEX店の営業時間等に公式内表記差がある場合は、要件定義書の情報源優先順位に従う。
+- 中野店用の道順写真をANNEX店へ流用しない。
+- SEOを理由に未確認の店舗情報・特徴・文章を追加しない。
+
+---
 
 ## 1. デザインコンセプト
 
@@ -81,13 +85,7 @@ BEYOND中野の魅力は、「鍛える場所」としてだけではなく、�
 
 全セクションを白背景カードにしない。
 
-背景・情報密度を意図的に切り替え、長いLPでも区切りが理解できるようにする。
-
-推奨リズム：
-
-`Hero Dark → Proof Dark → Reasons Light → Trainers Dark → Training/Food Light → Facility Dark → Results Light → Voice Off White → Trust Dark → Stores Light → Trial Light → Price Dark → Access Light → FAQ White → Blog Off White → Final CTA Photo Dark → Footer Ink`
-
-「3セクション以上ほぼ同じ白背景」が続く場合、境界線だけで済ませず、Compact Dark Proofや写真密度でリズムを作る。
+**Dark → Light → Dark → Editorial Light → Photo Dark** と背景・情報密度を意図的に切り替え、スクロールにリズムを作る。
 
 ### Principle 03 — ONE PRIMARY ACTION
 
@@ -288,12 +286,14 @@ Priority Cを禁止はしないが、**店舗固有写真より先に見せな�
 
 理由：「設備」ではなく、**BEYONDで実際に何が起きる場所か**が1枚で伝わるため。
 
-確定順は、コピーを固定した4枚のCinematic Image Sequenceとする。
+推奨順：
 
 1. トレーナー × 女性利用者
 2. ランニングマシン × 暗い店舗
 3. バーベルトレーニング後ろ姿
-4. 女性モデル系の確定素材
+4. 女性モデル Wide
+5. 女性モデル Close
+6. 必要な場合のみ追加
 
 ### Hero Crop
 
@@ -333,9 +333,13 @@ Mobile：下側・左側に濃度を集中。
 
 ### Trainer Portrait
 
-確定済みの円形切り抜き素材をそのまま使用する。
+Aspect Ratio：**4:5**
 
-Desktopは4 columns内で十分な大きさを確保する。Mobileは`aspect-ratio: 1 / 1`、120〜150px程度の円形Portraitとして左側に置き、顔・上半身が自然に見える位置へ調整する。
+顔のEye lineを上から35〜42%程度。
+
+円形Cropは使用しない。
+
+現在素材に円形切り抜きされた画像しかない場合は使用可能だが、可能な限り元矩形画像を優先する。
 
 ---
 
@@ -365,14 +369,6 @@ Logoは黒版、NavigationもInkへ。
 Logo + CTA + Menu。
 
 すべてのDesktop navigationを無理に並べない。
-
-Menu押下時はHeader直下から画面全体へFull Width Dark Menuを表示する。Concept / Trainers / Facility / Price / Access / FAQ / Blogを縦配置し、最下部に無料体験CTAを置く。
-
-- `Menu / X`、`aria-expanded`、状態別`aria-label`を使用
-- anchor / CTA選択、Escape、Desktop幅への遷移で閉じる
-- Open中はbody scroll lock、Close時に復帰
-- `height: calc(100dvh - header height)`、必要時のみ`overflow-y:auto`
-- 200〜300msのopacity + 微細なtranslate。Reduced Motionでは無効化
 
 ### Button / CTA
 
@@ -451,16 +447,13 @@ Production移行後、自前フォームが必要になった場合のみフォ�
 
 ### Footer
 
-背景は`#0B0D0F`を基本とする。
+情報を詰め込みすぎない一方、**中野店・ANNEX店の2店舗が存在することはFooterでも明確にする。**
 
-Desktop：左ロゴ / 中央ナビ / 右店舗情報。
+Desktop：左ロゴ / 中央ナビ / 右側に2店舗の簡易情報または店舗リンク。
 
-Mobile：Logo → 店舗情報 → Social/Map/LINE → Navigation → Sample note → Copyright。
+Mobile：Logo → Nakano / ANNEXの店舗情報 → Navigation → Copyright。
 
-- 白文字 + Gold iconは限定使用
-- Dividerは`Border Dark`
-- 情報ブロック間の余白は十分に取るが、Mobile下端に巨大な空白を作らない
-- Socialは公式ブランドロゴを無理にLucideで偽装せず、`Instagram` / `MapPin` / `MessageCircle`等の意味アイコン + テキストで統一可能
+店舗名・住所・Map等は必ず各店舗単位でまとまりを作り、別店舗の情報に見えないようにする。
 
 ---
 
@@ -472,7 +465,7 @@ Mobile：Logo → 店舗情報 → Social/Map/LINE → Navigation → Sample not
 
 デザインを主張しない。Heroを邪魔しないことを最優先。
 
-PCでは透明→Light stickyへ変化。NavigationはConcept / Trainers / Facility / Price / Access / FAQとし、Priceは`#price`へリンクする。
+PCでは透明→Light stickyへ変化。
 
 MobileでCTAは「無料体験」の短いラベルに縮小可能。
 
@@ -482,49 +475,101 @@ MobileでCTAは「無料体験」の短いラベルに縮小可能。
 
 #### PC
 
-Full-width。人物を右55〜70%側、Copyを左。
+Full-width。
+
+人物を右55〜70%側に寄せ、Copyを左。
 
 Copy block幅：`520–620px`。
 
-Eyebrow → H1 → Lead → CTA → Carousel controls。
+構成：Eyebrow → H1 → Lead → CTA 2つ → Carousel controls。
+
+画面最下部に、`01 / 05` + Progress line + Pause + Dotsを配置。
 
 #### Mobile
 
-専用縦Crop。Copyは左揃え。
+画像を縦Crop。
 
-Heroは`svh`に固定しすぎず、主要CTAが見えた後に大きな空白を残さない。
+Copyは中央揃えではなく**左揃え**。
+
+Hero高さは`min(780px, 88svh)`程度。
 
 CTAは縦2段。
+
+#### 前後との差
+
+次のProofまでDark toneを連続させ、Heroの世界観をすぐ切らない。
 
 ### 8.3 Proof Strip
 
 **役割：即時の安心材料**
 
-Dark背景。カード禁止。
+カード禁止。
 
-中野駅北口徒歩1分 / 手ぶらOK / 年中無休 / 無料体験等を3〜4項目。
+Dark背景上に4項目を横並び。
+
+例：中野駅北口徒歩1分 / 手ぶらOK / 年中無休 / 無料体験。
+
+項目間は1px separator。
+
+アイコンは原則不要。
 
 Mobileは2×2。
+
+数字や事実そのものを視覚主役とする。
 
 ### 8.4 Reasons
 
 **役割：理由の理解**
 
-背景：Off White。
+背景：`#F7F6F2`
 
-PCは大きな実写 + Editorial text。4枚均等カードは使わない。
+4枚均等カードを作らない。
 
-Mobileは写真 → 理由。Dividerで区切る。
+#### PC
+
+**非対称Editorial Layout**。
+
+左6〜7colに大きな指導写真。
+
+右5〜6colに、01 続けられる指導 / 02 無理のない食事 / 03 手ぶら / 04 駅近 を縦に配置。
+
+各項目は大きな番号＋H3＋2〜3行。
+
+Background boxなし。
+
+#### Mobile
+
+写真 → 4理由の順。
+
+理由の間をDividerで区切る。
 
 ### 8.5 Trainers
 
 **役割：人への信頼**
 
-背景：Ink / Dark。
+背景：`#0B0D0F`
 
-実トレーナー写真を主役にし、名前・肩書・短いメッセージを直接配置。
+Hero後で2回目のDark世界観。
 
-PCは4 columns。Mobileは1 columnのCompact Profile Rowとし、左に120〜150pxの円形Portrait、右にNumber / Name / Roman name / Qualification / Short messageを配置する。各Rowは32〜40px程度のpaddingとthin dividerで区切り、横スワイプにはしない。
+#### PC
+
+3名の場合は3 columns。
+
+完全均等なカードに見せず、中央または代表的な写真を5〜8%上へずらす等の軽い非対称性を入れる。
+
+写真の下：Trainer name / Qualification・Role / 1 sentence。
+
+Surface cardは使わず、背景に直接配置。
+
+#### Mobile
+
+1 column。
+
+写真は横幅100%。
+
+人物名と文章をしっかり読めるサイズにする。
+
+横スワイプのみにはしない。
 
 ### 8.6 Training × Food
 
@@ -532,247 +577,267 @@ PCは4 columns。Mobileは1 columnのCompact Profile Rowとし、左に120〜150
 
 背景：Warm Light。
 
-Training photo / Copy / Food photo / Copyの関係を明確にする。
+#### PC
 
-食事管理が全料金プラン共通と誤認される表現は避ける。
+左右Split。
+
+左：トレーニング写真 / 右：コピー。
+
+右下またはOverlapでFood imageを小さく配置。
+
+見出し：`TRAIN / EAT / CONTINUE` の3要素を英字の小ラベルとして使用可。
+
+#### Mobile
+
+Training photo → Copy → Food photo → Food copyの順。
+
+無理にOverlapさせない。
 
 ### 8.7 Facility
 
-**役割：空間価値**
+**役割：世界観訴求**
+
+ここは最も写真を大きく見せる。
 
 背景：Graphite / Dark。
 
-Main visualを大きく、DetailはMasonry/Grid。
-
-説明文より写真を優先。
-
-### 8.8 Results / Case Study
-
-**役割：定量Proof**
-
-背景：Warm Off White。
-
-Featured 1件を大きく見せる。
-
-PC：Before/After 2枚 + 右側Data / Short Story。
-
-Mobile：Before/After → Data → Story。
-
-追加事例を置く場合、Featuredより視覚階層を下げる。
-
-数字のBefore → AfterはGoldで変化後を強調してよい。
-
-### 8.9 Customer Voice
-
-**役割：定性Proof**
-
-背景：`#F7F6F2`前後のOff White。
-
-公式掲載内容を要約した3件を、Premium / Clean / HumanなEditorial Cardとして表示する。
-
 #### PC
 
-3 columns / equal height / gap 20〜24px。
+Main visual 8col / Copy 4col。
 
-- White surface / 1px low-contrast border / radius 6〜8px / Shadowなし
-- Card header row：左Number、右Lucide `Quote`
-- Name → Attribute → 28〜32pxの間隔 → Voice本文
-- Quoteは28px前後、Gold、opacity .7〜.8、stroke 1.4〜1.5
-- 3カードの下にLucide `BadgeCheck` + 共通出典注記を1回だけ表示
+その下に3〜4枚の写真をサイズ不均等のMasonry風で配置。
+
+CSS Gridで`2fr 1fr 1fr`程度の比率でよい。
 
 #### Mobile
 
-1 column / gap 16px。H2は`続けられる理由を、 / 会員様の声から。`の2行に固定する。
+Main image 16:10。
 
-Card padding 24〜28px、本文16px / line-height 1.8〜1.9程度。Accordionにはしない。
+Detail写真は2 columns。
 
-### 8.10 Trust / Awards / Media
+説明は最小限。
 
-**役割：第三者信頼**
+「設備一覧」をここで大量に文字化しない。
 
-背景：Ink / Dark。
+### 8.8 Results / Case Study（Should）
 
-#### Main Recognition
+**役割：Proof**
 
-Desktopは左にLabel + H2、中央にBEYOND AWARD 2025集合写真、右に受賞内容。H2は`積み重ねた実績を、 / 評価のかたちに。`。右側は`BEYOND AWARD 2025`、`TRAINER / 優良賞 / トレーナー部門`、`STORE / 優秀賞 / 店舗部門`をthin dividerで整理する。
+使う場合は1事例を大きく。
 
-#### Recognition History
+大量のBefore/Afterカード一覧にしない。
 
-Section labelは`RECOGNITION HISTORY`。2020 BEST GYM AWARDを横長のまま表示し、2021〜2023 GETFIT AWARDは3年連続の時間軸として並べる。Year / Award nameはHTMLテキストでも表示する。
+#### PC
 
-画像は`public/images/awards/`のoptimized WebPのみを使用する。Getfit 3画像はoptical sizeを揃え、2025集合写真を最も強く見せる。カード・Shadow・Gradient・汎用Awardアイコンは使用しない。
+左 Before/After / 右 Result data + short story。
+
+#### Mobile
+
+写真 → 数字 → story。
+
+数字の強調にGoldを使用可。
+
+掲載しない場合は、このSectionを丸ごと削除する。
+
+### 8.9 Trial Flow
+
+**役割：不安解消**
+
+背景：`#F7F6F2`
+
+#### PC
+
+横5 steps。
+
+カードに入れず、Number / Label / 短文をhorizontal lineでつなぐ。
+
+必要な1〜2stepのみ実写画像を添える。
+
+#### Mobile
+
+Vertical timeline。
+
+左に番号、右に内容。
+
+線自体を目立たせすぎない。
+
+### 8.10 Plan（Should）
+
+価格確定前は詳細Pricing tableを作らない。
+
+表示する場合、**初回カウンセリング・体験 0円 / 詳しい料金を見る**程度。
+
+3種類の豪華な料金カードを捏造しない。
 
 ### 8.11 Stores
 
-**役割：2店舗の関係整理**
+**役割：2店舗の関係整理＋ANNEX情報の充実**
 
-背景：Lightを維持する。TrustをDarkにすることで、Results〜Trial間の白背景連続を分断する。
+背景：White〜Off White。
 
-PC：中野店を大きく、ANNEXを30〜40%小さく配置。
+Section label候補：`LOCATIONS` / `2 STORES`。
 
-Mobile：Nakano → ANNEX。店舗名と住所・アクセスを近接させる。
-
-Card化せず、写真 + 店名 + MetaのEditorial layout。
-
-### 8.12 Trial Flow
-
-**役割：初回不安解消**
-
-背景：Warm Light。
-
-PCは横5 steps。各stepに実写を使用してよい。
-
-NumberはManrope 500 / Gold。Number間のConnectorは**番号の光学中心に揃える**。
-
-#### Number Style
-
-- Desktop: 36–44px
-- Mobile: 34–40px
-- Weight: 500
-- Letter spacing: `-0.03em`
-- Box / Circle / Badge化しない
-
-Mobileは縦Timeline。画像と文章を重ねない。
-
-### 8.13 Price
-
-**役割：価格理解・比較**
-
-#### Summary
-
-背景：`#0B0D0F`前後。
-
-H2 + 2 course columns。Off White文字、Muted Gray本文、Goldの番号・価格、低contrast dividerで構成し、過度なカード・Shadowなし。
-
-Course number `01 / 02`はGoldのEditorial numberとして扱う。
-
-#### Detail Open State
-
-背景：`#151719`前後。Summaryから白へ戻さず、わずかなDark Surface差で階層を作る。
-
-PCは左右2 columns。左右のPrice list領域はGridで同一行構造に近づけ、**下端の高さ差を極端に出さない**。
-
-各PlanはDivider list：Plan name / 内容 / Price / Unit price。
-
-`16回 / 2ヶ月`単体ではなく、`トレーニング16回 / 食事指導2ヶ月`のように意味を明示。
-
-SupportはPrice listの下に**Full-width section**として分離し、内部を2 course columnsにする。
-
-- 回数券側：対象プランのAfter Proteinのみ
-- Life Planning側：Personal Food Support + After Protein
-
-これにより2コースの特典混同を防ぐ。
-
-Mobileは左右Gridを解除し、Course 01 → Course 02 → Support → installment → CTAの順。SummaryもDarkを維持し、thin horizontal dividerで区切る。
-
-本文・補助文字を小さくしすぎない。Price detail本文はMobile 15–16px以上を基本。
-
-### 8.14 Access
-
-**役割：来店不安解消**
-
-背景：Off White。
-
-H2：`中野駅から、徒歩1分。`
+中野店をPrimary、ANNEXをSecondaryとする情報階層は維持するが、**ANNEXを30〜40%程度の小型カードとして処理しない。**
 
 #### PC
 
-5 steps横並び。Photoは同一高さ。
+カード2枚の均等横並びではなく、**縦に続く2つのEditorial Block**を基本とする。
 
-Number + Connector + ArrowはFlex/Gridで配置し、画像幅に依存したabsolute位置調整を避ける。
+**NAKANO / Primary block**
+
+- 先に配置
+- 7col程度の大きな店舗写真 + 5col程度の店舗情報を基本
+- Store nameを大きく表示
+- 住所 / 駅アクセス / 営業時間 / 電話 / Map CTA
+- 予約・LINEは正式な店舗別URL関係が確認できた場合のみ追加
+
+**NAKANO ANNEX / Secondary block**
+
+- NAKANO blockの後に十分な余白またはDividerを置いて開始
+- 独立した店舗写真 + 店舗情報を持つ
+- NAKANOより見出し・写真の視覚優先度を少し下げてもよいが、情報を読めるサイズは維持
+- 住所 / 駅アクセス / 営業時間 / 電話 / Map CTA
+- 未確認の特徴・設備・トレーナー等は追加しない
+
+2ブロックの写真・情報レイアウトを左右反転させ、長いLPの中でリズムを作ることは可。ただし、装飾のために店舗の主従関係や情報の対応を曖昧にしない。
 
 #### Mobile
 
-各stepを**Number → Image → Text**で縦に完結。
+`NAKANO → NAKANO ANNEX` の順で縦配置。
 
-横並びの文章を画像右に残さない。画像は100%。
+各店舗は、最低でも以下を初期表示で理解できる状態にする。
 
-H2はMobile 42–48pxを目安にし、`徒歩1分。`が不自然に一文字単位で折れないよう`text-wrap`・`<br>`を制御する。
+- 店舗名
+- 主要写真
+- 住所 / 駅アクセス
+- 営業時間等の基本情報
+- Google Maps CTA
 
-#### Map / Shop Info
+店舗情報全体をAccordion内へ隠さない。
 
-MapはカラーのGoogle Map。
+店舗の切り替わりには、十分なvertical space / section label / dividerのいずれかを用い、**スクロール中に別店舗へ切り替わったことが明確に分かる**ようにする。
 
-PC：Map 2/3 + Dark Shop Info 1/3。
+#### NG
 
-Mobile：Map → Dark Shop Info。
+- 同サイズ・同デザインのSaaS風店舗カード2枚
+- ANNEXを「詳しくはこちら」だけで終わらせる
+- 中野店写真のANNEXへの流用
+- 店舗名を表示せず、写真と住所だけで切り替える
+- SEO目的で未確認テキストを増やす
 
-Shop Info iconは`MapPin`, `TrainFront`, `Clock`, `CalendarDays`を基本とする。
+---
 
-### 8.15 FAQ
+### 8.12 Access
+
+**役割：2店舗それぞれの来店不安の解消**
+
+Access内でも、**NAKANO / NAKANO ANNEXの区分を明示する。**
+
+#### NAKANO ACCESS
+
+現時点で提示された道順写真は**中野店用**。
+
+##### PC
+
+5 stepsを横並び。
+
+画像Aspect：`4:3`
+
+写真下にGoldの番号。
+
+その下に最大2行の説明。
+
+白いカード背景は使わない。
+
+5STEP終了後にGoogle Maps CTAを配置。
+
+##### Mobile
+
+5stepを縦。
+
+写真を横幅100%。
+
+Number → Photo → Short Textの順を基本とする。
+
+#### NAKANO ANNEX ACCESS
+
+中野店用5STEP写真をANNEXへ流用しない。
+
+道順写真が未提供のサンプル段階では、**無理に5STEP化しない**。
+
+##### PC
+
+Storesとは別にAccess情報を設ける場合、ANNEXは以下のCompact Editorial Blockとする。
+
+- `NAKANO ANNEX ACCESS` label
+- 利用可能な店舗写真または外観写真（権利確認済みの場合）
+- 住所
+- 中野駅からの徒歩情報
+- 営業時間等の基本情報
+- Google Maps CTA
+
+写真と情報のSplit layoutを基本とし、一般的な地図カードUIには寄せすぎない。
+
+##### Mobile
+
+写真 → 店舗名 / Access → Address → Maps CTAの順。
+
+道順の正式写真・説明が後から提供された場合のみ、NAKANOと同様のStep UIへ拡張する。
+
+#### 共通ルール
+
+- 地図画像や経路を推測で生成しない
+- 中野 / ANNEXのMap CTAを取り違えない
+- 住所・駅徒歩情報は店舗名の直近に置く
+- ANNEXの情報量を増やす目的で、未確認の道順テキストを作らない
+
+---
+
+### 8.13 FAQ
 
 **役割：最終懸念の除去**
 
 背景：White。
 
-Eyebrow `FAQ`、H2は**「よくあるご質問。」**。
+最大幅：`800–880px`
 
-最大幅：`1040–1120px`程度。Question / Answerは左揃え。
+中央寄せ。質問行は左揃え。
 
-Divider Accordion。
+余計な写真・装飾を入れない。
 
-- Question: Desktop 20–22px / Mobile 18–20px / 600
-- Answer: Desktop 16px / Mobile 16–17px / 1.85
-- Q label: Gold, Manrope 600
-- Toggle: Lucide `Plus/Minus`
+このSectionで視覚的に一度静かにする。
 
-Mobileで本文を28px等に拡大しない。可読性とページ長を両立する。
-
-### 8.16 Blog Preview
-
-**役割：専門性・更新性・検索資産の存在提示**
-
-背景：Off White。FAQ → BLOG → Final CTAの順に配置する。
-
-最新3件のみ。
-
-Desktop Headerは左約50%にBLOG / H2 / 導入文、右約50%に黒背景のBEYOND NAKANOロゴ画像を`object-fit:contain`で置く。画像はMobileでは非表示。
-
-記事一覧はDesktop 3 columns、Mobile 1 column。3記事を同じ情報階層・同じ幅で扱う。
-
-Card背景を付けず、Date → Title → `記事を読む` + Lucide `ArrowUpRight`。記事間はthin dividerのみ。
-
-記事ごとに実サムネイルがない場合、同じBEYONDロゴ画像を3枚繰り返さない。Text-first listへ切替える。
-
-`BLOG一覧を見る` + Lucide `ArrowRight`は記事直下へ置き、Primary CTAより目立たせない。記事・一覧とも既存BLOGへの外部リンクとし、新規タブで開く。
-
-### 8.17 Final CTA / Reservation
+### 8.14 Final CTA / Reservation
 
 **役割：CV集中**
 
-背景：Hero first visual系の実写を再利用可。Dark overlay。
+背景：店舗またはトレーニング写真のFull Bleed。
 
-H2：`まずは、体験から。`を基本。
+Dark overlay。
 
-CTA：Primary = 無料体験 / Secondary = LINE / Supporting = 電話。
+コピーの文字量は最大2〜3行。
 
-Mobileでは`min-height:100vh`を使わず、内容 + `padding-block: 72–88px`を基本にする。
+CTA：Primary = 無料体験 / Secondary = LINE。
 
-背景画像の下側を見せるためだけの巨大な空白は禁止。
+電話はテキストリンク。
 
-### 8.18 Footer
+ここでフォームは置かない。
 
-**役割：情報の着地・回遊**
+### 8.15 Footer
 
-背景：`#0B0D0F`。
+Final CTAのDarkから**Light Footer**へ戻して終了。
 
-#### Desktop
+Logoは黒版。
 
-3 columns：Logo / Navigation / Store Information。
+Accentを使いすぎない。
 
-Vertical dividerは細く、Social rowは店舗情報下。
+中野店・ANNEX店をFooter内でも別店舗として認識できるよう、店舗名と主要情報を分けて表示する。
 
-#### Mobile
+Desktopでは2店舗情報を小さな2カラムまたは縦Stackで整理可能。Mobileでは`NAKANO → NAKANO ANNEX`の順を維持する。
 
-Logo → Divider → Store Information → Social → Divider → 2col Navigation → Sample note → Copyright。
+Footerで店舗情報を簡略化する場合でも、住所・Map等のリンクが別店舗へ誤接続しないことを優先する。
 
-- Store titleの不自然な1文字折返しを避ける
-- Address / Accessは16px前後、line-height 1.7
-- TELは少し強め
-- Socialの区切り線を均等
-- Copyrightが画面下で切れないpaddingを確保
-- Footer全体を不要に長くしない
-- `このページは営業提案用サンプルです。`をcopyright直上にGrayの小さな文字で表示する
+---
 
 ## 9. モーション
 
@@ -788,7 +853,7 @@ Logo → Divider → Store Information → Social → Divider → 2col Navigatio
 
 - Previous
 - Next
-- Current count + Progress line
+- Dots
 - Pause / Play
 - Swipe
 - Keyboard
@@ -846,9 +911,9 @@ Copyを画像下へ完全分離せず、世界観は維持する。
 
 ### Trainers
 
-PC 4列 → Mobile 1列のCompact Profile Row。
+PC 3列 → Mobile 1列。
 
-Mobileは左Portrait 120〜150px、右Profile textとし、巨大写真と大余白の反復を避ける。
+写真サイズを維持。
 
 ### Reasons
 
@@ -858,39 +923,29 @@ PC非対称写真＋文章 → Mobileでは写真先行。
 
 PC Gallery → Mobile 2列Gallery。
 
-### Results / Voice / Trust
+### Stores / Locations
 
-Results：写真 → 数字 → Story。
+PCは2つのEditorial Blockを縦に構成し、中野店を先に、ANNEX店を後に配置。
 
-Voice：1 columnのEditorial Card。
+Mobileは単純な横2カード化をせず、**NAKANO block → NAKANO ANNEX block**の順で縦配置する。
 
-Trust：2025 Main Recognition → Divider → BEST GYM 2020 → GETFIT 2021〜2023。Getfit 3画像のみ横3列可。
-
-### Price
-
-Summary 2 columns → 1 column。DetailはCourseごとに縦積み。
+店舗名・住所・Map CTAは省略せず、店舗切り替わりが視覚的に明確な余白を確保する。
 
 ### Access
 
-PC 5 columns → Mobile vertical steps。画像・文章の横並び禁止。
+NAKANO：PC 5 columns → Mobile vertical steps。
 
-### FAQ
-
-Question / Answerのfontを過度に拡大せず、本文幅を確保。
-
-### Footer
-
-3 columns → 1 column。Dark toneを維持。
+NAKANO ANNEX：PC / Mobileとも、正式な道順素材がない間はCompact Editorial Block。中野店用5STEPを流用しない。
 
 ### Navigation
 
-PC navはMobileでFull Width Menu。
+PC navはMobileでDrawer。
 
-Menu width 100%。
+Drawer width 100%。
 
 Dark背景。
 
-Primary CTAをMenu下部に固定しない。
+Primary CTAをDrawer下部に固定しない。
 
 コンテンツを隠す固定UIを増やさない。
 
@@ -1029,6 +1084,9 @@ Carousel Next / Pauseを`<div onClick>`で作らない。
 - No emoji
 - No fake metrics
 - No invented trainer details
+- Nakano / Nakano ANNEX must be visually distinguishable
+- ANNEX must not be reduced to a tiny auxiliary card
+- Do not reuse Nakano route photos as ANNEX route photos
 
 リファレンス画像は「完成画像をそのまま実装する」のではなく、**構図・余白・階層・写真比率を決める設計図**として使用する。
 
@@ -1038,51 +1096,43 @@ Carousel Next / Pauseを`<div onClick>`で作らない。
 
 ### 1. Goldではなく「実店舗のDark × Cyan」をブランドの土台にする
 
-中野店の黒い空間、植物、木材、青緑照明を取り込み、GoldはCTA・Award・Price数字等に限定する。
+生成済みモックのBlack × Goldは見栄えがよい一方、それだけでは一般的な高級ジムLPになりやすい。
+
+中野店の黒い空間、植物、木材、青緑照明を取り込むことで店舗固有性を出す。
+
+GoldはCTA・Award等に限定する。
 
 ### 2. Heroは「実在する人との体験」を第一スライドにする
 
-無人設備より、トレーナーが利用者を支えている実写を最初に見せる。
+無人の高級ジム写真より、トレーナーが利用者を支えている写真を最初に見せる。
 
-### 3. 情報を削るのではなく、Proofを圧縮して残す
+### 3. 同じカードUIを連続させず、Sectionごとに役割を変える
 
-Results＝数値 / Voice＝体験 / Trust＝第三者評価、と役割分担する。
+Reasons＝Editorial / Trainers＝Portrait / Facility＝Photography / Trial＝Timeline / Access＝Steps / FAQ＝Text。
 
-長文説明を増やすより、**実写・数字・声・出典**で判断材料を増やす。
+これにより長いLPでも単調にならない。
 
-### 4. 3セクション以上同じ白背景を続けない
+### 4. サンプルではフォームより予約導線を優先する
 
-Results / Voiceの後にCompact Dark Trustを入れ、Stores・Trialへつなぐ。Storesを無理に黒化しなくても背景リズムを確保できる。
+要件定義書v1.2を優先し、個人情報を取得する見せかけのフォームを実装しない。
 
-### 5. PriceはDark上で「比較→詳細→特典」の順に理解させる
+「無料体験」「LINE」の2つを明確にする。
 
-SummaryからDetailまでNear Blackを維持し、安価なSaaS料金カードにせず、背景差・Editorial divider・タイポグラフィで上質に見せる。
+### 5. 高級感は装飾ではなく、余白・写真・文字組みから作る
 
-### 6. MobileはDesktopの縮小ではない
+Gold、Shadow、Gradient、角丸を増やして高級に見せるのではなく、実写の品質と情報量の制御でBEYOND中野らしいプレミアム感を作る。
 
-Accessの画像・文章重なり、H2の変な改行、Final CTAの大余白、Footerの過長化を明示的に防ぐ。
+### 6. ANNEXは「付録」ではなく、第二の実店舗として見せる
 
-### 7. LucideはUI意味アイコンに限定する
+ページ全体の主役は中野店のままとする。
 
-`MapPin`, `TrainFront`, `Clock`, `CalendarDays`, `Phone`, `Instagram`, `MessageCircle`, `ArrowRight`, `Plus/Minus`等を使用する。
+一方で、店舗担当者からANNEX情報追加の要望が確定したため、ANNEXを小型カードやリンクだけに縮小しない。
 
-公式ブランドロゴそのものが必要な場合は、Lucideで偽装しない。
+**中野店＝Primary / ANNEX＝Secondary**という階層を、サイズ差だけで表現するのではなく、配置順・写真比率・見出し階層・余白で表現する。
 
-### 8. サンプルではフォームより予約導線を優先する
+これにより、2店舗の関係を保ちながら、ANNEX単体でも店舗情報を十分に理解できる状態を作る。
 
-無料体験 / LINE / 電話を明確にし、個人情報を取得しない。
-
-### 9. FooterはLightではなくDarkで閉じる
-
-Final CTAから連続したDark worldで着地させ、情報階層は線・余白・タイポグラフィで作る。
-
-### 10. Blogは更新性を示し、Final CTAと競合させない
-
-FAQとFinal CTAの間に最新3記事を同格で置き、既存BLOGへの導線を保つ。共通ロゴ画像はSection HeaderのEditorial visualとしてのみ使い、記事サムネイルとして反復しない。
-
-### 11. 高級感は装飾ではなく、余白・写真・文字組みから作る
-
-Gold、Shadow、Gradient、角丸を増やして高級に見せるのではなく、実写の品質と情報密度の制御でBEYOND中野らしいプレミアム感を作る。
+---
 
 ## 参考する設計思想・一次ソース
 
@@ -1093,5 +1143,3 @@ Gold、Shadow、Gradient、角丸を増やして高級に見せるのではな�
 - BEYOND中野ANNEX店 公式：https://beyond-gym.com/gym/gym-nakano-annex/
 - BEYONDについて 公式：https://beyond-gym.com/about/
 - BEYOND中野 独自公式：https://beyond-nakano.jp/
-- Google Search Central Helpful Content：https://developers.google.com/search/docs/fundamentals/creating-helpful-content
-- Google Search Central Site Move：https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes?hl=ja

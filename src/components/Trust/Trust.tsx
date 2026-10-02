@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Reveal } from "@/components/Reveal/Reveal";
 import { assetPath } from "@/lib/assetPath";
 
 import styles from "./Trust.module.css";
@@ -38,16 +39,16 @@ export function Trust() {
       <div className="container-wide">
         <div className={styles.mainRecognition}>
           <header className={styles.header}>
-            <p className={`eyebrow font-en ${styles.eyebrow}`}>
+            <Reveal as="p" className={`eyebrow font-en ${styles.eyebrow}`}>
               TRUST / AWARDS
-            </p>
-            <h2 id="trust-heading" className={styles.heading}>
+            </Reveal>
+            <Reveal as="h2" id="trust-heading" className={styles.heading} delay={70}>
               <span>積み重ねた実績を、</span>
               <span>評価のかたちに。</span>
-            </h2>
+            </Reveal>
           </header>
 
-          <div className={styles.mainVisual}>
+          <Reveal className={styles.mainVisual} variant="fade" delay={70}>
             <Image
               src={assetPath("/images/awards/award_team_2025_optimized.webp")}
               alt="BEYOND AWARD 2025でトレーナー部門優良賞と店舗部門優秀賞を受賞したメンバー"
@@ -56,9 +57,9 @@ export function Trust() {
               quality={90}
               sizes="(max-width: 767px) calc(100vw - 40px), 42vw"
             />
-          </div>
+          </Reveal>
 
-          <div className={styles.currentDetails}>
+          <Reveal className={styles.currentDetails} delay={140}>
             <p className={`font-en ${styles.awardProgram}`}>
               BEYOND AWARD 2025
             </p>
@@ -73,16 +74,20 @@ export function Trust() {
                 </div>
               ))}
             </dl>
-          </div>
+          </Reveal>
         </div>
 
         <div className={styles.externalRecognition}>
-          <p className={`eyebrow font-en ${styles.externalLabel}`}>
+          <Reveal as="p" className={`eyebrow font-en ${styles.externalLabel}`}>
             RECOGNITION HISTORY
-          </p>
+          </Reveal>
 
           <div className={styles.externalGroups}>
-            <section className={styles.bestGymGroup} aria-labelledby="best-gym-heading">
+            <Reveal
+              as="section"
+              className={styles.bestGymGroup}
+              aria-labelledby="best-gym-heading"
+            >
               <h3 id="best-gym-heading" className={`font-en ${styles.groupHeading}`}>
                 BEST GYM AWARD
               </h3>
@@ -99,15 +104,25 @@ export function Trust() {
                   />
                 </div>
               </div>
-            </section>
+            </Reveal>
 
             <section className={styles.getfitGroup} aria-labelledby="getfit-heading">
-              <h3 id="getfit-heading" className={`font-en ${styles.groupHeading}`}>
+              <Reveal
+                as="h3"
+                id="getfit-heading"
+                className={`font-en ${styles.groupHeading}`}
+                delay={70}
+              >
                 GETFIT AWARD <span>2021–2023 / 3 YEARS</span>
-              </h3>
+              </Reveal>
               <div className={styles.timeline}>
-                {getfitAwards.map((award) => (
-                  <figure className={styles.getfitAward} key={award.year}>
+                {getfitAwards.map((award, index) => (
+                  <Reveal
+                    as="figure"
+                    className={styles.getfitAward}
+                    delay={index * 70}
+                    key={award.year}
+                  >
                     <figcaption className={`font-en ${styles.year}`}>
                       {award.year}
                     </figcaption>
@@ -121,7 +136,7 @@ export function Trust() {
                         sizes="(max-width: 767px) 28vw, 13vw"
                       />
                     </div>
-                  </figure>
+                  </Reveal>
                 ))}
               </div>
             </section>

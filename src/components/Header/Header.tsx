@@ -10,7 +10,7 @@ const desktopNavigationItems = [
   { label: "コンセプト", href: "#concept" },
   { label: "トレーナー", href: "#trainers" },
   { label: "施設紹介", href: "#facility" },
-  { label: "料金", href: "#price" },
+  { label: "2店舗", href: "#locations" },
   { label: "アクセス", href: "#access" },
   { label: "よくある質問", href: "#faq" },
 ] as const;
@@ -19,7 +19,7 @@ const mobileNavigationItems = [
   { label: "CONCEPT", href: "#concept" },
   { label: "TRAINERS", href: "#trainers" },
   { label: "FACILITY", href: "#facility" },
-  { label: "PRICE", href: "#price" },
+  { label: "LOCATIONS", href: "#locations" },
   { label: "ACCESS", href: "#access" },
   { label: "FAQ", href: "#faq" },
   { label: "BLOG", href: "#blog" },
@@ -79,11 +79,13 @@ export function Header() {
             className={styles.logo}
             src={
               useDarkLogo
-                ? assetPath("/images/brand/beyond_nakano_logo_black.png")
+                ? assetPath(
+                    "/images/brand/beyond_nakano_logo_black_transparent_hq.webp",
+                  )
                 : assetPath("/images/brand/beyond_nakano_logo_white.png")
             }
-            width={290}
-            height={111}
+            width={useDarkLogo ? 1942 : 290}
+            height={useDarkLogo ? 809 : 111}
             alt="BEYOND NAKANO"
             priority
           />
